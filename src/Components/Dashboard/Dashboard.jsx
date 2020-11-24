@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { todos } from "./todos.json";
+import axios from "axios";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -198,7 +199,29 @@ class SidebarMenu extends React.Component {
 class Overview extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { name: "", email: "", password: "", phoneNumber: "" };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
+
+  onSubmit(e) {
+    axios
+      .post("http://localhost:5500/Client/register", this.state)
+      .then((res) => {
+        if (res.data === "") {
+          alert("a user with the same email already exists");
+          window.location.reload();
+        } else {
+          alert("user was successfully registered");
+          window.location.reload();
+        }
+      });
+  }
+
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
   render() {
     return (
       <div className="dash-view">
@@ -206,23 +229,45 @@ class Overview extends React.Component {
           <form>
             <h2 className="view-heading">Add Client</h2>
             <br></br>
-            <input type="text" placeholder="FirstName" required />
+            <input
+              type="text"
+              placeholder="Full Name"
+              name="name"
+              onChange={this.onChange}
+              required
+            />
             <br></br>
             <br></br>
-            <input type="text" placeholder="LastName" required />
+            <br></br>
+            <input
+              type="text"
+              placeholder="email"
+              required
+              name="email"
+              onChange={this.onChange}
+            />
             <br></br>
             <br></br>
-            <input type="text" placeholder="email" required />
+            <input
+              type="password"
+              placeholder="Password"
+              required
+              name="password"
+              onChange={this.onChange}
+            />
             <br></br>
             <br></br>
-            <input type="password" placeholder="Password" required />
-            <br></br>
-            <br></br>
-            <input type="text" placeholder="PhoneNumber" required />
+            <input
+              onChange={this.onChange}
+              type="text"
+              placeholder="PhoneNumber"
+              required
+              name="phoneNumber"
+            />
             <br></br>
             <br></br>
 
-            <input type="button" value="Add" />
+            <input type="button" value="Add" onClick={this.onSubmit} />
           </form>
         </center>
         <DashboardCard />
