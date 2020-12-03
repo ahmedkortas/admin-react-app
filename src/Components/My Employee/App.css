@@ -1,5 +1,10 @@
-
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.trContainer {
+  background-color: white !important;
+  border: solid;
+  border-width: 1px 0;
+}
