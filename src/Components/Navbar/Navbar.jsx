@@ -72,7 +72,7 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav style={{backgroundColor:'#010008'}}className="navbar navbar-expand-lg ">
+        <nav style={{backgroundColor:'##eafafa'}}className="navbar navbar-expand-lg ">
           <div className="collapse navbar-collapse" >
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
@@ -100,7 +100,7 @@ class Navbar extends Component {
                 
                
               >
-                <a  style={{width:'150px',marginLeft:'680px'}} onClick={() => {
+                <a  style={{width:'150px',marginLeft:'700px'}} onClick={() => {
                   localStorage.clear();
                   window.location.reload();
                 }}
