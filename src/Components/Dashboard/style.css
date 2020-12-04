@@ -1,9 +1,9 @@
 .sidebar-menu {
-  background-color: black;
-}
+  background-image: url("https://coloredbrain.com/wp-content/uploads/2016/07/login-background.jpg");
+  background-size: cover;}
 .active-item,
 .inactive-item {
-  color: black;
+  background-image: "https://4.bp.blogspot.com/-cCTtUWbUjbo/VbHxXn1-qzI/AAAAAAAAGBo/Jt9LdGLOu9c/s1600/bg.jpg";
   font-size: 16px;
 }
 
@@ -17,10 +17,10 @@ body{
 .vid-container{
   position:relative;
   height:85vh;
-  background-color: #010008;
+  background-repeat: no-repeat, repeat;
 }
 #dashboard{
-  background-color: #010008 !important;
+  background-color: #030302 !important;
 }
 .bgvid{
   position:absolute;
@@ -29,6 +29,7 @@ body{
   width:100vw;
 }
 .inner-container{
+  background-color: #af202c;
   width:400px;
   height:600px;
   position:absolute;
