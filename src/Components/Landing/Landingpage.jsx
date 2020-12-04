@@ -41,8 +41,7 @@ class Land extends React.Component {
               <Card className=" text-white">
                 <Card.ImgOverlay>
                   
-                  <Button
-                    variant="danger"
+                  <Button id = "btn"
                     className="landB1"
                     onClick={this.toUserLogin}
                   >

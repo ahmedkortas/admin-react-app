@@ -272,7 +272,7 @@ class Overview extends React.Component {
   
   <div class="inner-container">
     
-    <div style={{backgroundColor:'rgba(0, 0, 255, 0.1)'}} class="box" >
+    <div style={{backgroundColor:'rgb(0, 0, 0)'}} class="box" >
       <h1>Add client</h1>
       <input type="text"
                   placeholder="Full Name"
@@ -364,7 +364,7 @@ class ScheduleView extends React.Component {
  
   <div  class="inner-container">
     
-    <div class="box" style={{marginRight:'500px',backgroundColor:'rgba(0, 0, 255, 0.1)'}}>
+    <div class="box" style={{marginRight:'500px',backgroundColor:'rgb(0, 0, 0)'}}>
       <h1>Add Employee</h1>
       <input type="text"
                   placeholder="Full Name"
@@ -482,7 +482,7 @@ class PerformanceView extends React.Component {
   
   <div   class="inner-container">
    
-    <div class="box" style={{marginRight:'500px',backgroundColor:'rgba(0, 0, 255, 0.1)'}}>
+    <div class="box" style={{marginRight:'500px',backgroundColor:'rgb(0, 0, 0)'}}>
       <h1>Edit Profile</h1>
      
       <input type="password"
@@ -545,7 +545,7 @@ class AdministratorView extends React.Component {
  
   <div class="inner-container">
     
-    <div class="box" style={{marginRight:'500px',backgroundColor:'rgba(0, 0, 255, 0.1)'}}>
+    <div class="box" style={{marginRight:'500px',backgroundColor:'rgb(0, 0, 0)'}}>
       <h1>Add admin</h1>
       <input
                 type="text"
