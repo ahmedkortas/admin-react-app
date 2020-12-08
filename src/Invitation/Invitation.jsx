@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import './invitaion.css';
 class Invitation extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +32,7 @@ class Invitation extends React.Component {
       });
     }
     return (
-      <div>
+      <div id>
         <center>
           <br></br> <br></br>
           <form id="form">
