@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import './invitation.css';
+import './invitaion.css';
 class Invitation extends React.Component {
   constructor(props) {
     super(props);
