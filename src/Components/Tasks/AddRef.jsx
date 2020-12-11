@@ -85,24 +85,28 @@ class AddRef extends Component {
             setTimeout(() => {
               window.location.reload();
             }, 1600);
+          },
+
+          (error) => console.log(error.code),
+          async () => {
+            const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
+            // do something with the url
+            console.log(downloadURL);
+            let obj = {
+              project: this.state.project,
+              Natureofthestudy: this.state.Natureofstudy,
+              Client: this.state.Clientname,
+              date: this.state.Date,
+              url: downloadURL,
+            };
+
+            axios
+              .post(
+                "https://server-cunsulting.herokuapp.com/References/add",
+                obj
+              )
+              .then((res) => console.log(res));
           }
-        },
-        (error) => console.log(error.code),
-        async () => {
-          const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
-          // do something with the url
-          console.log(downloadURL);
-          let obj={
-            project:this.state.project,
-            Natureofthestudy:this.state.Natureofstudy,
-            Client:this.state.Clientname,
-            date:this.state.Date,
-              url: downloadURL,  
-          }
-          
-          axios.post("https://server-cunsulting.herokuapp.com/References/add", obj).then(res=>console.log(res))
-        }
- 
         );
       });
       Promise.all(promises)
@@ -119,100 +123,102 @@ class AddRef extends Component {
     };
 
     return (
-      <MDBContainer>
-        <MDBBtn clessName="danger " onClick={this.toggle}>
-          Add main refrence
-        </MDBBtn>
-        <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
-          <MDBModalHeader toggle={this.toggle}>
-            <div
-              style={{
-                width: "390px",
-                fontFamily: "serif",
-                fontSize: "25px",
-                fontWeight: "bold",
-              }}
-            >
-              Main refrence
-            </div>
-          </MDBModalHeader>
-          <MDBModalBody style={{ backgroundColor: "whiteSmoke" }}>
-            <center>
-              <form
-                style={{ fontSize: "22px", fontWeight: "bold" }}
-                onSubmit={this.onSubmit}
+      <div>
+        <MDBContainer>
+          <MDBBtn clessName="danger " onClick={this.toggle}>
+            Add main refrence
+          </MDBBtn>
+          <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
+            <MDBModalHeader toggle={this.toggle}>
+              <div
+                style={{
+                  width: "390px",
+                  fontFamily: "serif",
+                  fontSize: "25px",
+                  fontWeight: "bold",
+                }}
               >
-                <label name="Employeename">
-                  <strong>Client name</strong>
-                </label>
-                <br />
-                <input
-                  required
-                  name="Clientname"
-                  type="text"
-                  placeholder="Client Name"
-                  onChange={this.onChange}
-                  className="input"
-                ></input>
-                <br></br>
-                <label name="Clientname">
-                  <strong>Nature of study</strong>
-                </label>
-                <br></br>
-                <input
-                  required
-                  name="Natureofstudy"
-                  type="text"
-                  placeholder="Nat of study"
-                  onChange={this.onChange}
-                  className="input"
-                ></input>
-                <br></br>
-                <label name="project">
-                  <strong>Project</strong>
-                </label>
-                <br></br>
-                <input
-                  style={{ color: "black" }}
-                  required
-                  placeholder="Project"
-                  name="project"
-                  type="text"
-                  onChange={this.onChange}
-                  className="input"
-                ></input>
-                <br></br>
-                <label name="DueDate">
-                  <strong>Date</strong>
-                </label>
-                <br></br>
-                <input
-                  style={{ color: "black" }}
-                  required
-                  name="Date"
-                  type="date"
-                  onChange={this.onChange}
-                  className="input"
-                ></input>
-                <br></br>
-                <br></br>
-                <input
-                  style={{ color: "grey", width: "400px" }}
-                  type="file"
-                  name="upload"
-                  accept="application/pdf,application/vnd.ms-excel"
-                  onChange={handleImageAsFile}
-                />
-                <br />
-                <br />
-                <MDBBtn color="red" onClick={handleFireBaseUpload}>
-                  add Ref
-                </MDBBtn>
-              </form>
-            </center>
-          </MDBModalBody>
-        </MDBModal>
-      </MDBContainer>
+                Main refrence
+              </div>
+            </MDBModalHeader>
+            <MDBModalBody style={{ backgroundColor: "whiteSmoke" }}>
+              <center>
+                <form
+                  style={{ fontSize: "22px", fontWeight: "bold" }}
+                  onSubmit={this.onSubmit}
+                >
+                  <label name="Employeename">
+                    <strong>Client name</strong>
+                  </label>
+                  <br />
+                  <input
+                    required
+                    name="Clientname"
+                    type="text"
+                    placeholder="Client Name"
+                    onChange={this.onChange}
+                    className="input"
+                  ></input>
+                  <br></br>
+                  <label name="Clientname">
+                    <strong>Nature of study</strong>
+                  </label>
+                  <br></br>
+                  <input
+                    required
+                    name="Natureofstudy"
+                    type="text"
+                    placeholder="Nat of study"
+                    onChange={this.onChange}
+                    className="input"
+                  ></input>
+                  <br></br>
+                  <label name="project">
+                    <strong>Project</strong>
+                  </label>
+                  <br></br>
+                  <input
+                    style={{ color: "black" }}
+                    required
+                    placeholder="Project"
+                    name="project"
+                    type="text"
+                    onChange={this.onChange}
+                    className="input"
+                  ></input>
+                  <br></br>
+                  <label name="DueDate">
+                    <strong>Date</strong>
+                  </label>
+                  <br></br>
+                  <input
+                    style={{ color: "black" }}
+                    required
+                    name="Date"
+                    type="date"
+                    onChange={this.onChange}
+                    className="input"
+                  ></input>
+                  <br></br>
+                  <br></br>
+                  <input
+                    style={{ color: "grey", width: "400px" }}
+                    type="file"
+                    name="upload"
+                    accept="application/pdf,application/vnd.ms-excel"
+                    onChange={handleImageAsFile}
+                  />
+                  <br />
+                  <br />
+                  <MDBBtn color="red" onClick={handleFireBaseUpload}>
+                    add Ref
+                  </MDBBtn>
+                </form>
+              </center>
+            </MDBModalBody>
+          </MDBModal>
+        </MDBContainer>
+      </div>
     );
   }
 }

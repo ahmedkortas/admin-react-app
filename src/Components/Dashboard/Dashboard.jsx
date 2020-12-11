@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 
 import "../Dashboard/style.css";
-import { FaRegAddressBook } from 'react-icons/fa';
-import { AiOutlineEdit } from 'react-icons/ai';
+import { FaRegAddressBook } from "react-icons/fa";
+import { AiOutlineEdit } from "react-icons/ai";
 
 import { MDBBtn } from "mdbreact";
 
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
-import axios from "axios";
-import Swal from "sweetalert2";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +45,7 @@ class Dashboard extends Component {
     switch (this.state.view) {
       case "overview":
         return (
-          <div style={{backgroundColor:'#010008'}} id="dashboard">
+          <div style={{ backgroundColor: "#010008" }} id="dashboard">
             <Sidebar setView={this.setView} />
             <Overview />
           </div>
@@ -69,7 +66,7 @@ class Dashboard extends Component {
         );
       case "administrator":
         return (
-          <div style={{backgroundColor:'#010008'}} id="dashboard">
+          <div style={{ backgroundColor: "#010008" }} id="dashboard">
             <Sidebar setView={this.setView} />
             <AdministratorView />
           </div>
@@ -89,10 +86,8 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div className="sidebar-menu">
-        
         <UserProfileView />
         <SidebarMenu
-        
           item1={"Add Client"}
           item2={"Add Employee"}
           item3={"Update Profile"}
@@ -100,10 +95,9 @@ class Sidebar extends React.Component {
           setView={this.props.setView}
         />
         <div>
-          
           <MDBBtn
-          style={{width:'150px'}}
-          rounded
+            style={{ width: "150px" }}
+            rounded
             color="danger"
             onClick={() => {
               localStorage.clear();
@@ -186,7 +180,7 @@ class SidebarMenu extends React.Component {
           className={this.state.overview}
           onClick={() => this.setBtnAndView("overview")}
         >
-          <FaRegAddressBook/>
+          <FaRegAddressBook />
           {this.props.item1}
         </a>
         <a
@@ -194,7 +188,7 @@ class SidebarMenu extends React.Component {
           className={this.state.schedule}
           onClick={() => this.setBtnAndView("schedule")}
         >
-          <FaRegAddressBook/>
+          <FaRegAddressBook />
           {this.props.item2}
         </a>
         <a
@@ -202,7 +196,7 @@ class SidebarMenu extends React.Component {
           className={this.state.performance}
           onClick={() => this.setBtnAndView("performance")}
         >
-          <AiOutlineEdit/>
+          <AiOutlineEdit />
           {this.props.item3}
         </a>
         <a
@@ -210,7 +204,7 @@ class SidebarMenu extends React.Component {
           className={this.state.administrator}
           onClick={() => this.setBtnAndView("administrator")}
         >
-          <FaRegAddressBook/>
+          <FaRegAddressBook />
           {this.props.item4}
         </a>
       </div>
@@ -272,7 +266,10 @@ class Overview extends React.Component {
       return;
     }
     axios
-      .post("https://server-cunsulting.herokuapp.com/Client/register", this.state)
+      .post(
+        "https://server-cunsulting.herokuapp.com/Client/register",
+        this.state
+      )
       .then((res) => {
         if (res.data === "") {
           Swal.fire({
@@ -347,42 +344,54 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div  className="dash-view">
+      <div className="dash-view">
         <center>
-        <div class="vid-container">
-  
-  <div class="inner-container">
-    
-    <div style={{backgroundColor:'rgb(217, 217, 217)'}} class="box" >
-      <h1>Add client</h1>
-      <input type="text"
+          <div class="vid-container">
+            <div class="inner-container">
+              <div
+                style={{ backgroundColor: "rgb(217, 217, 217)" }}
+                class="box"
+              >
+                <h1>Add client</h1>
+                <input
+                  type="text"
                   placeholder="Full Name"
                   name="name"
-                  onChange={this.onChange} />
-      <input type="email"
+                  onChange={this.onChange}
+                />
+                <input
+                  type="email"
                   placeholder="email"
                   required
                   name="email"
-                  onChange={this.onChange}/>
-      <input  type="password"
+                  onChange={this.onChange}
+                />
+                <input
+                  type="password"
                   placeholder="Password"
                   required
                   name="password"
-                  onChange={this.onChange}/>
-      <input  onChange={this.onChange}
+                  onChange={this.onChange}
+                />
+                <input
+                  onChange={this.onChange}
                   type="number"
                   placeholder="PhoneNumber"
                   required
-                  name="phoneNumber"/>
-      <br/>
-      <MDBBtn style={{width:'150px'}}color="danger" type="submit" onClick={this.onSubmit}>
-      Add
+                  name="phoneNumber"
+                />
+                <br />
+                <MDBBtn
+                  style={{ width: "150px" }}
+                  color="danger"
+                  type="submit"
+                  onClick={this.onSubmit}
+                >
+                  Add
                 </MDBBtn>
-     
-    </div>
-  </div>
-</div>
-          
+              </div>
+            </div>
+          </div>
         </center>
         <DashboardCard />
       </div>
@@ -405,7 +414,10 @@ class ScheduleView extends React.Component {
 
   onSubmit(e) {
     axios
-      .post("https://server-cunsulting.herokuapp.com/employee/register", this.state)
+      .post(
+        "https://server-cunsulting.herokuapp.com/employee/register",
+        this.state
+      )
       .then((res) => {
         if (res.data === "") {
           Swal.fire({
@@ -439,42 +451,57 @@ class ScheduleView extends React.Component {
   }
   render() {
     return (
-      <div  className="dash-view">
+      <div className="dash-view">
         <center>
-        <div class="vid-container">
- 
-  <div  class="inner-container">
-    
-    <div class="box" style={{marginRight:'500px',backgroundColor:'rgb(217, 217, 217)'}}>
-      <h1>Add Employee</h1>
-      <input type="text"
+          <div class="vid-container">
+            <div class="inner-container">
+              <div
+                class="box"
+                style={{
+                  marginRight: "500px",
+                  backgroundColor: "rgb(217, 217, 217)",
+                }}
+              >
+                <h1>Add Employee</h1>
+                <input
+                  type="text"
                   placeholder="Full Name"
                   name="name"
-                  onChange={this.onChange} />
-      <input type="email"
+                  onChange={this.onChange}
+                />
+                <input
+                  type="email"
                   placeholder="email"
                   required
                   name="email"
-                  onChange={this.onChange}/>
-      <input  type="password"
+                  onChange={this.onChange}
+                />
+                <input
+                  type="password"
                   placeholder="Password"
                   required
                   name="password"
-                  onChange={this.onChange}/>
-      <input  onChange={this.onChange}
+                  onChange={this.onChange}
+                />
+                <input
+                  onChange={this.onChange}
                   type="number"
                   placeholder="PhoneNumber"
                   required
-                  name="phoneNumber"/>
-      <br/>
-      <MDBBtn style={{width:'150px'}}color="danger" type="submit" onClick={this.onSubmit}>
-      Add
+                  name="phoneNumber"
+                />
+                <br />
+                <MDBBtn
+                  style={{ width: "150px" }}
+                  color="danger"
+                  type="submit"
+                  onClick={this.onSubmit}
+                >
+                  Add
                 </MDBBtn>
-     
-    </div>
-  </div>
-</div>
-         
+              </div>
+            </div>
+          </div>
         </center>
         <DashboardCard />
       </div>
@@ -559,100 +586,58 @@ class PerformanceView extends React.Component {
     return (
       <div className="dash-view">
         <center>
-        <div class="vid-container">
-  
-  <div   class="inner-container">
-   
-    <div class="box" style={{marginRight:'500px',backgroundColor:'rgb(217, 217, 217)'}}>
-      <h1>Edit Profile</h1>
-     
-      <input type="password"
+          <div class="vid-container">
+            <div class="inner-container">
+              <div
+                class="box"
+                style={{
+                  marginRight: "500px",
+                  backgroundColor: "rgb(217, 217, 217)",
+                }}
+              >
+                <h1>Edit Profile</h1>
+
+                <input
+                  type="password"
                   placeholder="Password"
                   required
                   name="password"
                   onChange={this.onChange}
-                  />
-    <input type="password"
+                />
+                <input
+                  type="password"
                   placeholder="NewPassword"
                   required
                   name="newPassword"
-                  onChange={this.onChange}/>
-    <input  type="password"
+                  onChange={this.onChange}
+                />
+                <input
+                  type="password"
                   placeholder="NewPassword"
                   name="newPassword1"
                   required
-                  onChange={this.onChange}/>
-   
-      <br/>
-      <MDBBtn style={{width:'150px'}}color="danger" type="submit" onClick={this.onSubmit}>
-      Edit
+                  onChange={this.onChange}
+                />
+
+                <br />
+                <MDBBtn
+                  style={{ width: "150px" }}
+                  color="danger"
+                  type="submit"
+                  onClick={this.onSubmit}
+                >
+                  Edit
                 </MDBBtn>
-     
-    </div>
-  </div>
-</div>
-         
+              </div>
+            </div>
+          </div>
         </center>
         <DashboardCard />
       </div>
     );
   }
 }
-class AdministratorView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-  onSubmit(e) {
-    axios
-      .post("https://server-cunsulting.herokuapp.com/admin/register/invitation", this.state)
-      .then((res) => {
-        console.log(res.data);
-      });
-  }
-  onChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-  }
-  render() {
-    return (
-      <div className="dash-view">
-        <center>
-         
-          <div class="vid-container">
- 
-  <div class="inner-container">
-    
-    <div class="box" style={{marginRight:'500px',backgroundColor:'rgb(217, 217, 217)'}}>
-      <h1>Add admin</h1>
-      <input
-                type="text"
-                placeholder="email"
-                required
-                name="email"
-                onChange={this.onChange}
-              />{" "}
-    
-   
-   
-      <br/>
-      <MDBBtn style={{width:'150px'}}color="danger" type="submit" onClick={this.onSubmit}>
-      Add
-      
-                </MDBBtn>
-     
-    </div>
-  </div>
-</div>
-         
-        </center>
-      </div>
-    );
-  }
-}
+
 var currentView = "overview";
 
 class DashboardCard extends React.Component {

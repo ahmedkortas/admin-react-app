@@ -20,7 +20,6 @@ import "mdbreact/dist/css/mdb.css";
 import "antd/dist/antd.css";
 import Invitation from "./Invitation/Invitation.jsx";
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -37,11 +36,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
-        {localStorage.getItem("bangigkeitansscherzwort") === null ? (
-=======
         {localStorage.getItem("bangigkeitansscherzwort") !== null ? (
->>>>>>> 26d5765044202243afe937b739d0e1ee974aff09
           <Router>
             <div>
               <Navbar />
