@@ -30,13 +30,13 @@ class AddTask extends Component {
       DueDate: this.state.DueDate,
       status: "fase 1",
     };
-    console.log(obj);
-    axios
-      .post("https://server-cunsulting.herokuapp.com/task/create", obj)
-      .then((res) => {
-        console.log(res);
-        window.location.reload();
-      });
+    console.log(obj)
+    axios.post("https://server-cunsulting.herokuapp.com/task/create", obj).then((res) => {
+      console.log(res);
+      window.location.reload();
+    });
+
+
   }
 
   render() {

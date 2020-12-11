@@ -86,6 +86,23 @@ class AddRef extends Component {
               window.location.reload();
             }, 1600);
           }
+        },
+        (error) => console.log(error.code),
+        async () => {
+          const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
+          // do something with the url
+          console.log(downloadURL);
+          let obj={
+            project:this.state.project,
+            Natureofthestudy:this.state.Natureofstudy,
+            Client:this.state.Clientname,
+            date:this.state.Date,
+              url: downloadURL,  
+          }
+          
+          axios.post("https://server-cunsulting.herokuapp.com/References/add", obj).then(res=>console.log(res))
+        }
+ 
         );
       });
       Promise.all(promises)
