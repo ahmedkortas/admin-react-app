@@ -16,3 +16,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 //analytics is optional for this tutoral
 firebase.analytics();
+
+// module.exports.storage = firebase.storage();
+
+// module.exports.firebase = firebase;
