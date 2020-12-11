@@ -30,7 +30,7 @@ class AddTask extends Component {
       status: "fase 1",
     };
     console.log(obj)
-    axios.post("http://localhost:5500/task/create", obj).then((res) => {
+    axios.post("https://server-cunsulting.herokuapp.com/task/create", obj).then((res) => {
       console.log(res);
       window.location.reload();
     });
