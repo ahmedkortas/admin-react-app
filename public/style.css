@@ -1,11 +1,15 @@
 body {
-  background-image: url("http://cdn.magdeleine.co/wp-content/uploads/2014/05/3jPYgeVCTWCMqjtb7Dqi_IMG_8251-1400x933.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  overflow: hidden;
+  background-color: seashell;
 }
+
+body {
+  background-image: url("https://coloredbrain.com/wp-content/uploads/2016/07/login-background.jpg");
+  background-size: cover;
+}
+.chatbox-container {
+  height: 440px;
+}
+
 .phase1 {
   width: 25%;
   margin-top: 5px;
@@ -56,19 +60,10 @@ th {
   margin-top: 10px;
 }
 
-#form {
-  width: 400px;
-  height: 350px;
-  background-color: rgb(112, 141, 112);
-  top: 100%;
-  left: 100%;
-
-  border-radius: 5px;
-  padding: 5px;
-}
 .input {
   border: 2px solid #eee;
   border-radius: 5px;
+  color:black !important ;
   background-color: #eee;
   padding: 10px;
   margin: 0 auto;
@@ -96,7 +91,7 @@ input[type="submit"] {
   margin: 0 auto;
   margin-top: 15px;
   background: #5971be;
-  color: #fff;
+  color: rgb(199, 124, 124);
   font-size: 18px;
   padding: 10px;
   border-radius: 5px;
@@ -133,7 +128,7 @@ button {
 }
 
 .navbar {
-  background-color: #8594c7;
+  background-color: rgba(173, 118, 118, 0.85);
   margin: 0px;
 
   display: flex;
@@ -145,7 +140,7 @@ button {
   padding: 10px;
   margin-right: 5px;
   font-size: 1.1em;
-  color: #ffffff;
+  color: rgb(216, 56, 56);
 }
 
 .nav-selected {
@@ -233,6 +228,10 @@ input[type="message"]:focus {
 #dashboard {
   display: flex;
   height: 100vh;
+}
+
+.loginInput{
+  color: white !important ;
 }
 .sidebar-menu {
   text-align: center;
@@ -351,7 +350,7 @@ input[type="message"]:focus {
   position: relative;
   z-index: 2;
   background: rgba(0, 0, 0, 0.2);
-  color: #fff;
+  color: rgb(12, 1, 1);
   text-transform: uppercase;
   text-align: left;
   padding: 10px 10px 10px 50px;

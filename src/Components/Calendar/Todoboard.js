@@ -2,7 +2,9 @@ import React from 'react';
 import Todolist from './Todolist';
 import {DragDropContext} from 'react-beautiful-dnd';
 import {StateDispatchContext} from './stateManager.js';
+import { GrTableAdd } from 'react-icons/gr';
 import './Todoboard.css';
+import { MDBBtn } from "mdbreact";
 
 const Todoboard = (props) => {
   const stateDispatch = React.useContext(StateDispatchContext);
@@ -36,9 +38,25 @@ const Todoboard = (props) => {
   const AddListButton = () => {
     return (
       <span
-        className="addListButton"
+        // className="addListButton"
         onClick={addList}
-      >{"+ Add list"}</span>
+      >
+         <a  
+               
+                className="button b-pink">
+                 
+                 <MDBBtn
+          style={{width:'150px'}}
+          rounded
+            color="danger"
+           
+          >
+            <GrTableAdd/>&nbsp;
+            Add list
+          </MDBBtn>
+                </a>
+        {/* {"+ Add list"} */}
+      </span>
     );
   };
 

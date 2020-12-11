@@ -1,6 +1,7 @@
+import { Button, Card } from "react-bootstrap";
 import React from "react";
 import Login from "../Login/Login.jsx";
-
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody } from "mdbreact";
 
 class Land extends React.Component {
   constructor(props) {
@@ -16,32 +17,48 @@ class Land extends React.Component {
     var logUser = !this.state.goToUserLogin;
     this.setState({ goToUserLogin: logUser });
   }
- 
-  
+  state = {
+    modal10: false,
+    modal11: false,
+  };
+
+  toggle = (nr) => () => {
+    let modalNumber = "modal" + nr;
+    this.setState({
+      [modalNumber]: !this.state[modalNumber],
+    });
+  };
+
   render() {
     return (
       <div>
-          <center>
-        {!this.state.goToUserLogin ? (
-          <div>
-              <br></br><br></br><br></br>
-            
-            <h3 className="landP">
-              Plan and schedule your workflow online. Increase your team
-              efficiency.
-            </h3>
-            <br />
-            <button className="landB1" onClick={this.toUserLogin}>
-            Join as Admin
-            </button>
-          
-          </div>
-        ) : this.state.goToUserLogin ? (
-          <Login/>
-          
-        ) : null}
+        <center>
+          {!this.state.goToUserLogin ? (
+            <div>
+              <br></br>
+              <br></br>
+              <br></br>
+              <Card className=" text-white">
+                <Card.ImgOverlay>
+                  
+                  <Button id = "btn"
+                    className="landB1"
+                    onClick={this.toUserLogin}
+                  >
+                    Join as Admin
+                  </Button>
+                </Card.ImgOverlay>
+              </Card>
+
+              <br />
+            </div>
+          ) : this.state.goToUserLogin ? (
+           
+                  <Login />
+               
+          ) : null}
         </center>
-        </div>
+      </div>
     );
   }
 }

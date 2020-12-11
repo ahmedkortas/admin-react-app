@@ -1,7 +1,11 @@
-import React from 'react';
+import React,{ useEffect, useState }from 'react';
 import './Navbar.css';
+import { MDBBtn } from "mdbreact";
+import {FcAlarmClock,FcCalendar} from 'react-icons/fc'
 import {StateDispatchContext} from './stateManager.js';
-
+import {  MDBIcon } from "mdbreact";
+import { FiSettings } from 'react-icons/fi';
+import { Col, Container, Row } from 'react-bootstrap';
 const SettingsMenu = (props) => {
 
   const stateDispatch = React.useContext(StateDispatchContext);
@@ -32,6 +36,7 @@ const SettingsMenu = (props) => {
     >
       
       <li
+      
         className="settings-menu-item"
         onClick={clearAll}
       >Clear All</li>
@@ -110,14 +115,65 @@ const ImportDisplay = (props) => {
 
 const Navbar = (props) => {
   const [settingsMenuProps, setSettingsMenuProps] = React.useState([0,0,false]);
+  const [date, setdate] = useState(new Date());
+
+  useEffect(() => {
+
+    const interval = setInterval(() => {
+      setdate(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+    
+   
+  }, []);
+
+ // const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+  const hour = date.getUTCHours();
+  const minutes = date.getUTCMinutes();
+  const seconds = date.getUTCSeconds();
+
 
   return(
     <div className="navbar">
+       <div class="bg_move">
+      
+              <p>
+              <Container>
+  <Row>
+    <Col><div style={{fontSize:'50px',marginLeft:'300px',color:'white'}}> 
+    <div style={{marginLeft:'80px'}}><FcCalendar/></div>
     
+    {day}.{month + 1}.{year} {" "} </div></Col>
+    <div style={{fontSize:'50px',marginLeft:'500px',color:'white'}}>
+    <div style={{marginLeft:'80px'}}><FcAlarmClock/><br/></div>
+    
+      {hour + 1}:{minutes}:{seconds}</div>
+    <Col></Col>
+  </Row>
+ 
+</Container>
+               
+               
+              </p>
+    </div>
+    
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <span
-        className="navbar-settings navbar-item"
+       
         onClick={event => setSettingsMenuProps([event.target.offsetLeft, event.target.offsetTop, !settingsMenuProps[2]])}
-      >Settings</span>
+      >
+       <a  
+                
+                className="button b-pink">
+                  <MDBBtn style={{width:'150px'}}color="danger" >
+                  <FiSettings/>&nbsp;
+      Settings
+      
+                </MDBBtn>
+                </a></span>
       {settingsMenuProps[2] &&
         <SettingsMenu
           posX={settingsMenuProps[0]-10}
