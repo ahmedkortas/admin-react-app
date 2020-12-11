@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../Navbar/Navbar.jsx";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 class Login extends Component {
   constructor(props) {
@@ -29,15 +30,22 @@ class Login extends Component {
       password: this.state.password,
     };
     if (obj.password.length < 8) {
-      return alert("Please enter a password longer than 8 characters");
+      return Swal.fire({
+        icon: "error",
+        title: "Please enter a password longer than 8 characters...",
+      });
     }
     axios.post("http://localhost:5500/admin/login", obj).then((res) => {
       if (res.data !== false) {
         localStorage.setItem("email", obj.email);
-        localStorage.setItem("token", res.data);
+        localStorage.setItem("bangigkeitansscherzwort", res.data);
         window.location.reload();
       } else {
-        return alert("password or email are incorrect");
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       }
     });
     e.preventDefault();
